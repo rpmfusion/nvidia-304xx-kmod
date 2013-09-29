@@ -6,9 +6,9 @@
 %global buildforkernels current
 
 Name:          nvidia-304xx-kmod
-Version:       304.88
+Version:       304.108
 # Taken over by kmodtool
-Release:       3%{?dist}.1
+Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -20,7 +20,7 @@ Source0:       nvidia-kmod-data-%{version}.tar.xz
 
 Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
 
-Patch0:        nvidia_304.88_linux_3.11.patch
+Patch0:        nvidia_304.108_linux_3.11.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -81,6 +81,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Sep 29 2013 Leigh Scott <leigh123linux@googlemail.com> - 304.108-1
+- Update to 304.108
+- redo kernel patch
+
 * Sun Sep 29 2013 Nicolas Chauvet <kwizart@gmail.com> - 304.88-3.1
 - Rebuilt for kernel
 
