@@ -6,9 +6,9 @@
 %global buildforkernels current
 
 Name:          nvidia-304xx-kmod
-Version:       304.116
+Version:       304.117
 # Taken over by kmodtool
-Release:       4%{?dist}
+Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -80,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Dec 14 2013 Nicolas Chauvet <kwizart@gmail.com> - 304.117-1
+- Update to 304.117
+
 * Tue Dec 10 2013 Nicolas Chauvet <kwizart@gmail.com> - 304.116-4
 - Rebuilt for f20 final kernel
 
