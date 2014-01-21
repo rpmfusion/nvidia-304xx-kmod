@@ -8,7 +8,7 @@
 Name:          nvidia-304xx-kmod
 Version:       304.117
 # Taken over by kmodtool
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -80,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 21 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.117-4
+- make more changes to 3.13 kernel patch
+
 * Mon Jan 13 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.117-3
 - fix 3.13.0 kernel patch for EFI systems with CSM disabled
 
