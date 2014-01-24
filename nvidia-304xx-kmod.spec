@@ -6,9 +6,9 @@
 %global buildforkernels akmod
 
 Name:          nvidia-304xx-kmod
-Version:       304.117
+Version:       304.119
 # Taken over by kmodtool
-Release:       4%{?dist}
+Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -80,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jan 24 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.119-1
+- Update to 304.119
+
 * Tue Jan 21 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.117-4
 - make more changes to 3.13 kernel patch
 
