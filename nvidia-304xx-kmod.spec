@@ -6,7 +6,7 @@
 %global buildforkernels akmod
 
 Name:          nvidia-304xx-kmod
-Version:       304.119
+Version:       304.121
 # Taken over by kmodtool
 Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
@@ -19,7 +19,6 @@ URL:           http://www.nvidia.com/
 Source0:       nvidia-kmod-data-%{version}.tar.xz
 
 Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
-Patch0:        nvidia_3.13_kernel.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -46,7 +45,7 @@ kmodtool  --target %{_target_cpu}  --repo rpmfusion --kmodname %{name} --filterf
 for arch in x86 x64
 do
 pushd nvidiapkg-${arch}
-%patch0 -p1
+ echo 'no patch'
 popd
 done
 
@@ -80,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 14 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.121-1
+- Update to 304.121
+
 * Fri Jan 24 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.119-1
 - Update to 304.119
 
