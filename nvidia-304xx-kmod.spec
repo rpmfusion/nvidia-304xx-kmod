@@ -3,12 +3,12 @@
 # "buildforkernels newest" macro for just that build; immediately after
 # queuing that build enable the macro again for subsequent builds; that way
 # a new akmod package will only get build when a new one is actually needed
-%global buildforkernels newest
+#global buildforkernels akmod
 
 Name:          nvidia-304xx-kmod
-Version:       304.121
+Version:       304.123
 # Taken over by kmodtool
-Release:       1%{?dist}.10
+Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -79,99 +79,23 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Tue Jul 08 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.10
-- Rebuilt for kernel
+* Thu Jul 10 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.123-1
+- Update to 304.123
 
-* Tue Jul 08 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.9
-- Rebuilt for kernel
-
-* Tue Jul 08 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.8
-- Rebuilt for kernel
-
-* Tue Jun 17 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.7
-- Rebuilt for kernel
-
-* Fri Jun 13 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.6
-- Rebuilt for kernel
-
-* Sun Jun 08 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.5
-- Rebuilt for kernel
-
-* Tue Jun 03 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.4
-- Rebuilt for kernel
-
-* Thu May 15 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.3
-- Rebuilt for kernel
-
-* Thu May 08 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.2
-- Rebuilt for kernel
-
-* Wed Apr 30 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.1
-- Rebuilt for kernel
-
-* Thu Apr 24 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.121-1
+* Fri Mar 14 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.121-1
 - Update to 304.121
-
-* Wed Apr 16 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.12
-- Rebuilt for kernel
-
-* Fri Apr 04 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.11
-- Rebuilt for kernel
-
-* Wed Apr 02 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.10
-- Rebuilt for kernel
-
-* Tue Mar 25 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.9
-- Rebuilt for kernel
-
-* Sun Mar 09 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.8
-- Rebuilt for kernel
-
-* Tue Mar 04 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.7
-- Rebuilt for kernel
-
-* Tue Feb 25 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.6
-- Rebuilt for kernel
-
-* Mon Feb 24 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.5
-- Rebuilt for kernel
-
-* Mon Feb 17 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.4
-- Rebuilt for kernel
-
-* Sat Feb 15 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.2
-- Rebuilt for kernel
-
-* Wed Feb 12 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-2.1
-- Rebuilt for kernel
-
-* Wed Feb 12 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.119-2
-- rebuilt for patch changes
-
-* Fri Feb 07 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-1.3
-- Rebuilt for kernel
-
-* Thu Jan 30 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-1.2
-- Rebuilt for kernel
-
-* Tue Jan 28 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.119-1.1
-- Rebuilt for kernel
 
 * Fri Jan 24 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.119-1
 - Update to 304.119
+
+* Tue Jan 21 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.117-4
+- make more changes to 3.13 kernel patch
+
+* Mon Jan 13 2014 Leigh Scott <leigh123linux@googlemail.com> - 304.117-3
+- fix 3.13.0 kernel patch for EFI systems with CSM disabled
+
+* Mon Dec 23 2013 Leigh Scott <leigh123linux@googlemail.com> - 304.117-2
 - patch for 3.13.0 kernel
-
-* Fri Jan 17 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.117-1.4
-- Rebuilt for kernel
-
-* Sun Jan 12 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.117-1.3
-- Rebuilt for kernel
-
-* Wed Dec 25 2013 Nicolas Chauvet <kwizart@gmail.com> - 304.117-1.2
-- Rebuilt for kernel
-
-* Fri Dec 20 2013 Nicolas Chauvet <kwizart@gmail.com> - 304.117-1.1
-- Rebuilt for kernel
 
 * Sat Dec 14 2013 Nicolas Chauvet <kwizart@gmail.com> - 304.117-1
 - Update to 304.117
