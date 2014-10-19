@@ -8,7 +8,7 @@
 Name:          nvidia-304xx-kmod
 Version:       304.121
 # Taken over by kmodtool
-Release:       1%{?dist}.14
+Release:       1%{?dist}.15
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -79,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Oct 19 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.15
+- Rebuilt for kernel
+
 * Thu Oct 16 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.121-1.14
 - Rebuilt for kernel
 
