@@ -3,12 +3,12 @@
 # "buildforkernels newest" macro for just that build; immediately after
 # queuing that build enable the macro again for subsequent builds; that way
 # a new akmod package will only get build when a new one is actually needed
-%global buildforkernels akmod
+%global buildforkernels current
 
 Name:          nvidia-304xx-kmod
 Version:       304.123
 # Taken over by kmodtool
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -79,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Dec 05 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.123-2
+- Rebuilt for f21 final kernel
+
 * Thu Jul 10 2014 Nicolas Chauvet <kwizart@gmail.com> - 304.123-1
 - Update to 304.123
 
