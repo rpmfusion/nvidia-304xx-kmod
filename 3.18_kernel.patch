@@ -1,0 +1,13 @@
+--- a/kernel/nv-drm.c	2014-12-02 03:55:59.000000000 +0000
++++ b/kernel/nv-drm.c	2014-12-16 18:09:05.340107169 +0000
+@@ -76,6 +76,10 @@ static struct drm_driver nv_drm_driver =
+     .unload = nv_drm_unload,
+     .fops = &nv_drm_fops,
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,18,0)
++    .set_busid = drm_pci_set_busid,
++#endif
++
+     .name = "nvidia-drm",
+     .desc = "NVIDIA DRM driver",
+     .date = "20140818",
