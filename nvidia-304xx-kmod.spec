@@ -2,8 +2,8 @@
 # that contains bugfixes or other improvements then you must disable the
 # "buildforkernels newest" macro for just that build; immediately after
 # queuing that build enable the macro again for subsequent builds; that way
-# a new akmod package will only get build when a new one is actually needed
-%global buildforkernels newest
+# a new akmod package will only get build when a new one is actually neededi
+#global buildforkernels newest
 
 Name:          nvidia-304xx-kmod
 Version:       304.125
