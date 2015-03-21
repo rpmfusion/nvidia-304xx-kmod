@@ -3,12 +3,12 @@
 # "buildforkernels newest" macro for just that build; immediately after
 # queuing that build enable the macro again for subsequent builds; that way
 # a new akmod package will only get build when a new one is actually needed
-%global buildforkernels newest
+%global buildforkernels current
 
 Name:          nvidia-304xx-kmod
 Version:       304.125
 # Taken over by kmodtool
-Release:       2%{?dist}.2
+Release:       3%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -21,7 +21,8 @@ Source0:       nvidia-kmod-data-%{version}.tar.xz
 Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
 
 Patch0:        3.18_kernel.patch
-Patch1:        4.0.0_kernel.patch
+Patch1:        3.19_kernel.patch
+Patch2:        4.0.0_kernel.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -50,6 +51,7 @@ do
 pushd nvidiapkg-${arch}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 popd
 done
 
@@ -83,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Mar 21 2015 Leigh Scott <leigh123linux@googlemail.com> - 304.125-3
+- Patch for 3.19 kernel
+
 * Sat Mar 21 2015 Nicolas Chauvet <kwizart@gmail.com> - 304.125-2.2
 - Rebuilt for kernel
 
