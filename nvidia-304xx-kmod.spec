@@ -85,18 +85,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon Mar 30 2015 Nicolas Chauvet <kwizart@gmail.com>
+* Mon Mar 30 2015 Nicolas Chauvet <kwizart@gmail.com> - 304.125-3.3
 - Rebuilt for kernel
 
-<<<<<<< nvidia-304xx-kmod.spec
-* Mon Mar 30 2015 Nicolas Chauvet <kwizart@gmail.com> - 304.125-3.2
-- Rebuilt for kernel
-
-=======
 * Fri Mar 27 2015 Nicolas Chauvet <kwizart@gmail.com> - 304.125-3.2
 - Rebuilt for kernel
 
->>>>>>> 1.36
 * Mon Mar 23 2015 Nicolas Chauvet <kwizart@gmail.com> - 304.125-3.1
 - Rebuilt for kernel
 
