@@ -7,9 +7,9 @@
 %global debug_package %{nil}
 
 Name:          nvidia-304xx-kmod
-Version:       304.131
+Version:       304.132
 # Taken over by kmodtool
-Release:       4%{?dist}
+Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -22,7 +22,6 @@ Source0:       nvidia-kmod-data-%{version}.tar.xz
 Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
 # https://anonscm.debian.org/viewvc/pkg-nvidia/packages/nvidia-graphics-drivers-legacy-304xx/trunk/debian/module/debian/patches/disable-mtrr.patch?view=markup
 Patch0:        disable-mtrr.patch
-Patch1:        linux-4.6.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -50,7 +49,6 @@ for arch in x86 x64
 do
 pushd nvidiapkg-${arch}
 %patch0 -p0
-%patch1 -p1
 popd
 done
 
@@ -84,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 27 2016 Leigh Scott <leigh123linux@googlemail.com> - 304.132-1
+- Update to 304.132
+
 * Sun Jul 24 2016 leigh scott <leigh123linux@googlemail.com> - 304.131-4
 - switch to akmod build
 
