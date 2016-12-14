@@ -7,7 +7,7 @@
 %global debug_package %{nil}
 
 Name:          nvidia-304xx-kmod
-Version:       304.132
+Version:       304.134
 # Taken over by kmodtool
 Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 14 2016 leigh scott <leigh123linux@googlemail.com> - 304.134-1
+- Update to 304.134
+
 * Tue Sep 27 2016 Leigh Scott <leigh123linux@googlemail.com> - 304.132-1
 - Update to 304.132
 
