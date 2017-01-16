@@ -1,0 +1,14 @@
+--- a/kernel/nv-drm.c	2016-12-15 12:41:26.000000000 +0100
++++ b/kernel/nv-drm.c	2016-12-15 12:58:48.000000000 +0100
+@@ -71,7 +71,11 @@ static const struct file_operations nv_d
+ };
+ 
+ static struct drm_driver nv_drm_driver = {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++    .driver_features = DRIVER_LEGACY,
++#else
+     .driver_features = 0,
++#endif
+     .load = nv_drm_load,
+     .unload = nv_drm_unload,
+     .fops = &nv_drm_fops,
