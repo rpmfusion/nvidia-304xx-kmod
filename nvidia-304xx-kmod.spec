@@ -7,9 +7,9 @@
 %global debug_package %{nil}
 
 Name:          nvidia-304xx-kmod
-Version:       304.134
+Version:       304.135
 # Taken over by kmodtool
-Release:       2%{?dist}
+Release:       1%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 15 2017 Leigh Scott <leigh123linux@googlemail.com> - 304.135-1
+- Update to 304.135
+
 * Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 304.134-2
 - patch to fix loading module on 4.9 kernel
 
