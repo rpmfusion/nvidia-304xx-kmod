@@ -8,10 +8,10 @@ Subject: [PATCH 1/1] Add support for Linux 4.10
  nv-pat.c   | 40 ++++++++++++++++++++++++++++++++++++++++
  2 files changed, 45 insertions(+)
 
-diff --git a/kernels/nv-linux.h b/kernels/nv-linux.h
+diff --git a/kernel/nv-linux.h b/kernel/nv-linux.h
 index b46e71f..3081c06 100644
---- a/kernels/nv-linux.h
-+++ b/kernels/nv-linux.h
+--- a/kernel/nv-linux.h
++++ b/kernel/nv-linux.h
 @@ -1895,8 +1895,13 @@ static inline NvU64 nv_node_end_pfn(int nid)
  
          #else
@@ -26,10 +26,10 @@ index b46e71f..3081c06 100644
  
          #endif
  
-diff --git a/kernels/nv-pat.c b/kernels/nv-pat.c
+diff --git a/kernel/nv-pat.c b/kernel/nv-pat.c
 index e71e81c..d742789 100644
---- a/kernels/nv-pat.c
-+++ b/kernels/nv-pat.c
+--- a/kernel/nv-pat.c
++++ b/kernel/nv-pat.c
 @@ -203,6 +203,7 @@ void nv_disable_pat_support(void)
  }
  
