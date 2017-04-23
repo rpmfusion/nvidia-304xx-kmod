@@ -9,7 +9,7 @@
 Name:          nvidia-304xx-kmod
 Version:       304.135
 # Taken over by kmodtool
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -24,6 +24,7 @@ Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
 #Patch0:        disable-mtrr.patch
 Patch1:        4.9.0_kernel.patch
 Patch2:        kernel_4.10.patch
+Patch3:        4.11_kernel.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -53,6 +54,7 @@ pushd nvidiapkg-${arch}
 #patch0 -p0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 popd
 done
 
@@ -86,6 +88,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Apr 23 2017 Leigh Scott <leigh123linux@googlemail.com> - 304.135-4
+- patch for kernel-4.11rc
+
 * Mon Feb 20 2017 Leigh Scott <leigh123linux@googlemail.com> - 304.135-3
 - patch for kernel-4.10
 
