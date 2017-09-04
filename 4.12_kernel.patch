@@ -1,17 +1,34 @@
-From 5c46c537c864f08b22c6db4c187755c66bfcaa70 Mon Sep 17 00:00:00 2001
-From: Seth Forshee <seth.forshee@canonical.com>
-Date: Tue, 25 Jul 2017 08:05:39 -0500
-Subject: [PATCH] Add support for Linux 4.12
-
----
- nv-linux.h | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
-
-diff --git a/kernel/nv-linux.h b/kernel/nv-linux.h
-index 3081c065992b..c22b103c7c1f 100644
---- a/kernel/nv-linux.h
-+++ b/kernel/nv-linux.h
-@@ -1378,7 +1378,23 @@ typedef void irqreturn_t;
+diff -ur a/kernel/nv-linux.h b/kernel/nv-linux.h
+--- a/kernel/nv-linux.h	2017-08-30 14:54:42.136888697 +0300
++++ b/kernel/nv-linux.h	2017-08-30 15:29:22.294495893 +0300
+@@ -1351,6 +1351,7 @@
+ 
+ #define NV_PAGE_MASK    (NvU64)(long)PAGE_MASK
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
+ #define NV_PGD_OFFSET(address, kernel, mm)              \
+    ({                                                   \
+         struct mm_struct *__mm = (mm);                  \
+@@ -1361,6 +1362,18 @@
+             __pgd = pgd_offset_k(address);              \
+         __pgd;                                          \
+     })
++#else
++#define NV_PGD_OFFSET(address, kernel, mm)              \
++   ({                                                   \
++        struct mm_struct *__mm = (mm);                  \
++        pgd_t *__pgd;                                   \
++        if (!kernel)                                    \
++            __pgd = pgd_offset(__mm, address);          \
++        else                                            \
++            __pgd = NULL;                               \
++        __pgd;                                          \
++    })
++#endif
+ 
+ #define NV_PGD_PRESENT(pgd)                             \
+    ({                                                   \
+@@ -1378,7 +1391,23 @@
     })
  #define NV_PMD_UNMAP(pmd) pmd_unmap(pmd);
  #else
@@ -36,6 +53,27 @@ index 3081c065992b..c22b103c7c1f 100644
  #define NV_PMD_OFFSET(address, pgd)                     \
     ({                                                   \
          pmd_t *__pmd = NULL;                            \
--- 
-2.11.0
-
+diff -ur a/kernel/nv-vtophys.c b/kernel/nv-vtophys.c
+--- a/kernel/nv-vtophys.c	2017-01-18 01:26:31.000000000 +0200
++++ b/kernel/nv-vtophys.c	2017-08-30 15:02:33.064755838 +0300
+@@ -81,10 +81,20 @@
+ #endif
+ 
+     /* direct-mapped kernel address */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
+     if ((address > PAGE_OFFSET) && (address < VMALLOC_START))
++#else
++    if (virt_addr_valid(address))
++#endif
+         return __pa(address);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
+     return nv_get_phys_address(address, TRUE);
++#else
++    nv_printf(NV_DBG_ERRORS,
++        "NVRM: can't translate address in %s()!\n", __FUNCTION__);
++    return 0;
++#endif
+ }
+ 
+ NvU64 NV_API_CALL nv_get_user_address(NvU64 address)
