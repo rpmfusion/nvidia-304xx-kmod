@@ -1,0 +1,41 @@
+From 5c46c537c864f08b22c6db4c187755c66bfcaa70 Mon Sep 17 00:00:00 2001
+From: Seth Forshee <seth.forshee@canonical.com>
+Date: Tue, 25 Jul 2017 08:05:39 -0500
+Subject: [PATCH] Add support for Linux 4.12
+
+---
+ nv-linux.h | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/kernel/nv-linux.h b/kernel/nv-linux.h
+index 3081c065992b..c22b103c7c1f 100644
+--- a/kernel/nv-linux.h
++++ b/kernel/nv-linux.h
+@@ -1378,7 +1378,23 @@ typedef void irqreturn_t;
+    })
+ #define NV_PMD_UNMAP(pmd) pmd_unmap(pmd);
+ #else
+-#if defined(PUD_SHIFT) /* 4-level pgtable */
++#if defined(P4D_SHIFT) /* 5-level pgtable */
++#define NV_PMD_OFFSET(address, pgd)                     \
++   ({                                                   \
++        pmd_t *__pmd;                                   \
++        p4d_t *__p4d;                                   \
++        pud_t *__pud;                                   \
++        __p4d = p4d_offset(pgd, address);               \
++        if (__p4d == NULL ||                            \
++            (p4d_bad(*__p4d) || p4d_none(*__p4d)))      \
++                return NULL;                            \
++        __pud = pud_offset(__p4d, address);             \
++        if (__pud == NULL ||                            \
++            (pud_bad(*__pud) || pud_none(*__pud)))      \
++                return NULL;                            \
++        __pmd = pmd_offset(__pud, address);             \
++    })
++#elif defined(PUD_SHIFT) /* 4-level pgtable */
+ #define NV_PMD_OFFSET(address, pgd)                     \
+    ({                                                   \
+         pmd_t *__pmd = NULL;                            \
+-- 
+2.11.0
+
