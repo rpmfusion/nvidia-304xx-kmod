@@ -9,7 +9,7 @@
 Name:          nvidia-304xx-kmod
 Version:       304.137
 # Taken over by kmodtool
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -22,7 +22,6 @@ Source0:       nvidia-kmod-data-%{version}.tar.xz
 Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
 # https://anonscm.debian.org/viewvc/pkg-nvidia/packages/nvidia-graphics-drivers-legacy-304xx/trunk/debian/module/debian/patches/disable-mtrr.patch?view=markup
 #Patch0:        disable-mtrr.patch
-Patch1:        4.12_kernel.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -50,7 +49,6 @@ for arch in x86 x64
 do
 pushd nvidiapkg-${arch}
 #patch0 -p0
-%patch1 -p1
 popd
 done
 
@@ -84,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 22 2017 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-2
+- remove no longer needed 4.12_kernel.patch
+
 * Fri Sep 22 2017 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-1
 - Update to 304.137
 
