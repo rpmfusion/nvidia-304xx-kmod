@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 06 2017 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-3
+- patch for kernel-4.14
+
 * Fri Sep 22 2017 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-2
 - remove no longer needed 4.12_kernel.patch
 
