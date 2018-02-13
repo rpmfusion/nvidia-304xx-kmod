@@ -9,7 +9,7 @@
 Name:          nvidia-304xx-kmod
 Version:       304.137
 # Taken over by kmodtool
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -23,6 +23,7 @@ Source11:      nvidia-304xx-kmodtool-excludekernel-filterfile
 # https://anonscm.debian.org/viewvc/pkg-nvidia/packages/nvidia-graphics-drivers-legacy-304xx/trunk/debian/module/debian/patches/disable-mtrr.patch?view=markup
 Patch0:        disable-warnings.patch
 Patch1:        4.14_kernel.patch
+Patch2:        4.15_kernel.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -51,6 +52,7 @@ do
 pushd nvidiapkg-${arch}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 popd
 done
 
@@ -84,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Feb 13 2018 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-4
+- patch for kernel-4.15
+
 * Wed Dec 06 2017 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-3
 - patch for kernel-4.14
 
