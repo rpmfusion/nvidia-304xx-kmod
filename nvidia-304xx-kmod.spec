@@ -9,7 +9,7 @@
 Name:          nvidia-304xx-kmod
 Version:       304.137
 # Taken over by kmodtool
-Release:       4%{?dist}
+Release:       5%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -86,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 02 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 304.137-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Tue Feb 13 2018 Nerijus Baliūnas <nerijus@users.sourceforge.net> - 304.137-4
 - patch for kernel-4.15
 
